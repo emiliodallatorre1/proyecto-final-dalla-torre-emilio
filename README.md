@@ -19,3 +19,5 @@ Dalla Torre Emilio
 16) Creacion del modelo (Estudiantes)
 17) Hacer las migraciones-> (py manage.py makemigrations) (py manage.py migrate)
 18) Creo (forms.py) para crear insertar los datos en el modelo
+19) Creo los urls necesarios en (urls.py) y nos aseguramos que funcionen
+20) Crear super usuario. Usuario: emilio - Contraseña emilio
