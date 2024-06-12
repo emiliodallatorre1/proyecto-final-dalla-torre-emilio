@@ -21,3 +21,7 @@ Dalla Torre Emilio
 18) Creo (forms.py) para crear insertar los datos en el modelo
 19) Creo los urls necesarios en (urls.py) y nos aseguramos que funcionen
 20) Crear super usuario. Usuario: emilio - Contraseña emilio
+21) Colecto todos los archivos estáticos para que la Web se pueda levantar sin problemas
+con el comando (py manage.py collectstatic)
+22) Hago correr la web para verificar que todo funcione correctamente con (py manage.py runserver)
+
