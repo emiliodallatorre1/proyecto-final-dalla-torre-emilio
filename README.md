@@ -1,5 +1,5 @@
-{
 Bienvenidos a la Tercera Entrega
+
 Dalla Torre Emilio
 1) Creo la carpeta "3RA ENTREGA" que contendra mi proyecto
 2) Agrego los archivos .gitignore y README
@@ -17,4 +17,3 @@ Dalla Torre Emilio
 14) Crear un template en la carpeta (templates) 
 15) Crear vistas en el archivo (views.py)
 16) 
-}
