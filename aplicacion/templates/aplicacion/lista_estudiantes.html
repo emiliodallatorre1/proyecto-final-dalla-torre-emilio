@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Estudiantes{% endblock %}
+
+{% block content %}
+    <h2>Lista de Estudiantes</h2>
+    <ul>
+        {% for estudiante in estudiantes %}
+            <li>{{ estudiante.nombre }} - {{ estudiante.edad }} años - {{ estudiante.correo }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
