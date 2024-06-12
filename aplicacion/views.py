@@ -3,11 +3,11 @@ from .models import Estudiante
 from .forms import EstudianteForm
 
 def inicio(request):
-    return render(request, 'index.html')
+    return render(request, 'aplicacion/index.html')
 
 def lista_estudiantes(request):
     estudiantes = Estudiante.objects.all()
-    return render(request, 'lista_estudiantes.html', {'estudiantes': estudiantes})
+    return render(request, 'aplicacion/lista_estudiantes.html', {'estudiantes': estudiantes})
 
 def nuevo_estudiante(request):
     if request.method == 'POST':
@@ -17,4 +17,4 @@ def nuevo_estudiante(request):
             return redirect('lista_estudiantes')
     else:
         form = EstudianteForm()
-    return render(request, 'nuevo_estudiante.html', {'form': form})
+    return render(request, 'aplicacion/nuevo_estudiante.html', {'form': form})

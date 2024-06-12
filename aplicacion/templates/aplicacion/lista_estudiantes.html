@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Lista de Estudiantes{% endblock %}
+{% block title_head %}Lista de Estudiantes{% endblock %}
 
-{% block content %}
+{% block h1_header %}
+    Lista de Estudiantes
+{% endblock h1_header %}
+
+{% block main %}
     <h2>Lista de Estudiantes</h2>
     <ul>
         {% for estudiante in estudiantes %}
