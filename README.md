@@ -16,4 +16,6 @@ Dalla Torre Emilio
 13) Agrego (BASE_DIR / 'templates') al archivo setting.py en DIRS de TEMPLATE
 14) Crear un template en la carpeta (templates) 
 15) Crear vistas en el archivo (views.py)
-16) 
+16) Creacion del modelo (Estudiantes)
+17) Hacer las migraciones-> (py manage.py makemigrations) (py manage.py migrate)
+18) Creo (forms.py) para crear insertar los datos en el modelo
