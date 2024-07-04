@@ -7,10 +7,16 @@
 {% endblock h1_header %}
 
 {% block main %}
+
+{% if estudiantes %}
     <h2>Lista de Estudiantes</h2>
     <ul>
         {% for estudiante in estudiantes %}
             <li>{{ estudiante.nombre }} - {{ estudiante.edad }} años - {{ estudiante.correo }}</li>
         {% endfor %}
     </ul>
+{% else %}
+    <p> No hay estudiantes registrados.</p>
+{% endif %}
+
 {% endblock %}
