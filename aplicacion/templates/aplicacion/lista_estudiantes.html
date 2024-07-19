@@ -7,7 +7,11 @@
 {% endblock h1_header %}
 
 {% block main %}
+<form action={% url "lista_estudiantes" %} method="get">
 
+<input type="submit" value="Buscar">
+
+</form>
 {% if estudiantes %}
     <h2>Lista de Estudiantes</h2>
     <ul>
