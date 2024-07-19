@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'aplicacion',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'aplicacion','static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -131,3 +132,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Configuración de Autenticación
 LOGIN_REDIRECT_URL = 'profile'
 LOGOUT_REDIRECT_URL = 'inicio'
+AUTH_USER_MODEL = 'usuarios.Usuario'
