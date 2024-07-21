@@ -1,0 +1,12 @@
+{% extends 'usuarios/base_usuarios.html' %}
+
+{% block titulo %}
+  Editar perfil
+{% endblock titulo %}
+
+{% block contenido %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="first_name" class="form-label">Nombre:</label>
+      <input type="text" class="form-control" id="first_name" name="first_name" required

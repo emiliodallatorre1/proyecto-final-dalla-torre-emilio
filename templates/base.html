@@ -27,7 +27,14 @@
                 <a class="navbar-brand" href={% url "inicio" %}>Inicio</a>
                 <a class="navbar-brand" href={% url "lista_estudiantes" %}>Lista Estudiante</a>
                 <a class="navbar-brand" href={% url "nuevo_estudiante" %}>Nuevo Estudiante</a>
-                
+            
+                {% if user.is_authenticated %}
+                <a class="navbar-brand" href="{% url 'logout' %}">Cerrar Sesión</a>
+                <a class="navbar-brand" href="{% url 'perfil' %}">Perfil</a>
+            {% else %}
+                <a class="navbar-brand" href="{% url 'login' %}">Iniciar Sesión</a>
+                <a class="navbar-brand" href="{% url 'registro' %}">Registro</a>
+            {% endif %}           
             </div>
         </nav>
         <!-- Masthead-->
