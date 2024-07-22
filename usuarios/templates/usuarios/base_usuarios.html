@@ -1,20 +1,18 @@
 {% extends 'base.html' %}
 
-{% block content %}
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-md-12">
-        {% block titulo %}
-          {{ titulo }}
-        {% endblock titulo %}
-
-        <div class="card">
-          <div class="card-body">
-            {% block contenido %}
-            {% endblock contenido %}
-          </div>
-        </div>
-      </div>
+{% block header %}
+<nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+        {% if user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'logout' %}">Cerrar Sesión</a>
+            <a class="navbar-brand" href="{% url 'perfil' %}">Perfil</a>
+        {% else %}
+            <a class="btn btn-primary" href="{% url 'login' %}">Iniciar Sesión</a>
+            <a class="btn btn-secondary" href="{% url 'registro' %}">Registro</a>
+        {% endif %}
     </div>
-  </div>
-{% endblock content %}
+</nav>
+{% endblock %}
+
+{% block contenido %} 
+{% endblock %}

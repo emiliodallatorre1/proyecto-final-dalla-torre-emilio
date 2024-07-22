@@ -14,7 +14,7 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, 'usuarios/register.html', {'form': form})
+    return render(request, 'usuarios/registro.html', {'form': form})
 
 def login(request):
     if request.method == 'POST':
@@ -24,7 +24,7 @@ def login(request):
         if user is not None:
             auth_login(request, user)
             messages.success(request, f'¡Bienvenido/a {user.username}!')
-            return redirect('profile')
+            return redirect('perfil')
         else:
             messages.error(request, 'Usuario o contraseña incorrectos.')
     return render(request, 'usuarios/login.html')
@@ -42,10 +42,10 @@ def edit_profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, '¡Perfil actualizado!')
-            return redirect('edit_profile')
+            return redirect('editar_perfil')
     else:
         form = UserEditForm(instance=request.user)
-    return render(request, 'usuarios/edit_profile.html', {'form': form})
+    return render(request, 'usuarios/editar_perfil.html', {'form': form})
 
 @login_required
 def change_password(request):
@@ -54,7 +54,7 @@ def change_password(request):
         if form.is_valid():
             form.save()
             messages.success(request, '¡Contraseña cambiada!')
-            return redirect('change_password')
+            return redirect('cambiar_pass')
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'usuarios/change_password.html', {'form': form})
