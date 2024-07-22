@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block header %}
+{% block main %}
 <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
         {% if user.is_authenticated %}
@@ -12,7 +12,7 @@
         {% endif %}
     </div>
 </nav>
-{% endblock %}
+{% endblock main %}
 
 {% block contenido %} 
 {% endblock %}
