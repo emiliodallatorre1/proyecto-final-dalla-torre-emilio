@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
-
 {% block title_head %}Lista de Estudiantes{% endblock %}
-
 {% block h1_header %}
     Lista de Estudiantes
 {% endblock h1_header %}
-
 {% block main %}
-<form action={% url "lista_estudiantes" %} method="get">
-
-<input type="submit" value="Buscar">
-
+<form action="{% url 'lista_estudiantes' %}" method="get">
+    {{ formulario.as_p }}
+    <input type="submit" value="Buscar">
 </form>
 {% if estudiantes %}
     <h2>Lista de Estudiantes</h2>
     <ul>
         {% for estudiante in estudiantes %}
-            <li>{{ estudiante.nombre }} - {{ estudiante.edad }} años - {{ estudiante.correo }}</li>
+            <li>
+                {{ estudiante.nombre }} {{ estudiante.apellido }}
+                <a href="{% url 'ver_estudiante' estudiante.id %}">Ver</a>
+                <a href="{% url 'editar_estudiante' estudiante.id %}">Editar</a>
+                <a href="{% url 'eliminar_estudiante' estudiante.id %}">Eliminar</a>
+            </li>
         {% endfor %}
     </ul>
 {% else %}
-    <p> No hay estudiantes registrados.</p>
+    <p>No hay estudiantes registrados.</p>
 {% endif %}
-
 {% endblock %}

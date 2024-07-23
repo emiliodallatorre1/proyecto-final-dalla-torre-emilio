@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title_head %}
+Editar Estudiante
+{% endblock %}
+
+{% block h1_header %}
+Editar Estudiante
+{% endblock %}
+
+{% block main %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Guardar cambios">
+    </form>
+    <a href="{% url 'lista_estudiantes' %}">Cancelar</a>
+{% endblock %}

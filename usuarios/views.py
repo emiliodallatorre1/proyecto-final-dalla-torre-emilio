@@ -22,9 +22,9 @@ def login(request):
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
-          
             messages.success(request, f'¡Bienvenido/a {user.username}!')
-            return redirect('inicio')
+            next_url = request.GET.get('next')
+            return redirect(next_url or 'inicio')
         else:
             messages.error(request, 'Usuario o contraseña incorrectos.')
     else:

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title_head %}
+Eliminar Estudiante
+{% endblock %}
+
+{% block h1_header %}
+Eliminar Estudiante
+{% endblock %}
+
+{% block main %}
+    <h2>¿Estás seguro de que quieres eliminar a {{ estudiante.nombre }} {{ estudiante.apellido }}?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Sí, eliminar">
+    </form>
+    <a href="{% url 'lista_estudiantes' %}">Cancelar</a>
+{% endblock %}

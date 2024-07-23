@@ -131,6 +131,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configuración de Autenticación
-LOGIN_REDIRECT_URL = 'profile'
+LOGIN_REDIRECT_URL = 'inicio'
 LOGOUT_REDIRECT_URL = 'inicio'
 AUTH_USER_MODEL = 'usuarios.Usuario'
+LOGIN_URL = '/usuarios/login/'  

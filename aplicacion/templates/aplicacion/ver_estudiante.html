@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title_head %}
+Detalles del Estudiante
+{% endblock %}
+
+{% block h1_header %}
+Detalles del Estudiante
+{% endblock %}
+
+{% block main %}
+    <h2>{{ estudiante.nombre }} {{ estudiante.apellido }}</h2>
+    <p>Email: {{ estudiante.email }}</p>
+    <p>Fecha de nacimiento: {{ estudiante.fecha_nacimiento }}</p>
+    <h3>Materias:</h3>
+    <ul>
+        {% for materia in estudiante.materias.all %}
+            <li>{{ materia.get_nombre_display }}</li>
+        {% empty %}
+            <li>No está inscrito en ninguna materia.</li>
+        {% endfor %}
+    </ul>
+    {% if estudiante.avatar %}
+        <img src="{{ estudiante.avatar.url }}" alt="Avatar de {{ estudiante.nombre }}">
+    {% endif %}
+    <a href="{% url 'lista_estudiantes' %}">Volver a la lista</a>
+{% endblock %}
