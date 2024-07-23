@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from aplicacion.views import inicio, lista_estudiantes, nuevo_estudiante
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/',admin.site.urls, name='admin'),
@@ -25,3 +27,4 @@ urlpatterns = [
     path('nuevo/', nuevo_estudiante, name='nuevo_estudiante'),
     path('usuarios/', include('usuarios.urls')),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

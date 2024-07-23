@@ -29,8 +29,18 @@
                 <a class="navbar-brand" href={% url "nuevo_estudiante" %}>Nuevo Estudiante</a>
             
             {% if user.is_authenticated %}
-                <a class="navbar-brand" href="{% url 'logout' %}">Cerrar Sesión</a>
-                <a class="navbar-brand" href="{% url 'perfil' %}">Perfil</a>
+            <a class="navbar-brand" href="{% url 'editar_perfil' %}">
+                {% if user.avatar %}
+                <img src="{{user.avatar.url}}" alt="{{user.name}}" height='40px'>
+                {% else %}
+                    <img src="{% static 'default-avatar.png' %}" alt="{{user.name}}" height='40px'>
+                {% endif %}
+                {{request.user.username}}
+            </a>
+                <form action={% url "logout" %} method='POST'>
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-secondary" value="Cerrar Sesión">
+                </form>
             {% else %}
                 <a class="btn btn-primary" href="{% url 'login' %}">Iniciar Sesión</a>
                 <a class="btn btn-primary" href="{% url 'registro' %}">Registro</a>
@@ -47,7 +57,7 @@
                             <!-- Page heading-->
                             <h1 class="mb-5">
                                 {% block h1_header %}
-                                Hola Amorcito
+                                Inicio
                                 {% endblock h1_header %}
                             </h1>
                         </div>
