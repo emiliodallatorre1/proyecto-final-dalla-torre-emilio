@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Estudiante, Materia
 from .forms import EstudianteForm, BuscarEstudiante
 from django.contrib.auth.decorators import login_required
+import logging
+logger = logging.getLogger(__name__)
 
 def inicio(request):
     return render(request, 'aplicacion/index.html')
@@ -47,12 +49,12 @@ def ver_estudiante(request, estudiante_id):
 
 @login_required
 def editar_estudiante(request, estudiante_id):
-    estudiante = get_object_or_404(Estudiante, id=estudiante_id)
+    estudiante = get_object_or_404(Estudiante, id=estudiante_id, profesor=request.user)
     if request.method == 'POST':
-        form = EstudianteForm(request.POST, instance=estudiante)
+        form = EstudianteForm(request.POST, request.FILES, instance=estudiante)
         if form.is_valid():
             form.save()
-            return redirect('lista_estudiantes')
+            return redirect('ver_estudiante', estudiante_id=estudiante.id)
     else:
         form = EstudianteForm(instance=estudiante)
     return render(request, 'aplicacion/editar_estudiante.html', {'form': form, 'estudiante': estudiante})
@@ -64,3 +66,20 @@ def eliminar_estudiante(request, estudiante_id):
         estudiante.delete()
         return redirect('lista_estudiantes')
     return render(request, 'aplicacion/eliminar_estudiante.html', {'estudiante': estudiante})
+
+# @login_required
+# def editar_estudiante(request, estudiante_id):
+#     estudiante = get_object_or_404(Estudiante, id=estudiante_id, profesor=request.user)
+#     if request.method == 'POST':
+#         form = EstudianteForm(request.POST, request.FILES, instance=estudiante)
+#         if form.is_valid():
+#             logger.info(f"Form is valid. Files: {request.FILES}")
+#             estudiante = form.save()
+#             logger.info(f"Estudiante saved. Avatar: {estudiante.avatar}")
+#             return redirect('ver_estudiante', estudiante_id=estudiante.id)
+#         else:
+#             logger.error(f"Form errors: {form.errors}")
+#     else:
+#         form = EstudianteForm(instance=estudiante)
+#     return render(request, 'aplicacion/editar_estudiante.html', {'form': form, 'estudiante': estudiante})
+

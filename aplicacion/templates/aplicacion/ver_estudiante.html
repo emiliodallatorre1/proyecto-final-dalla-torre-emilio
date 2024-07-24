@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title_head %}
 Detalles del Estudiante
@@ -9,6 +10,7 @@ Detalles del Estudiante
 {% endblock %}
 
 {% block main %}
+
     <h2>{{ estudiante.nombre }} {{ estudiante.apellido }}</h2>
     <p>Email: {{ estudiante.email }}</p>
     <p>Fecha de nacimiento: {{ estudiante.fecha_nacimiento }}</p>
@@ -20,8 +22,13 @@ Detalles del Estudiante
             <li>No está inscrito en ninguna materia.</li>
         {% endfor %}
     </ul>
-    {% if estudiante.avatar %}
-        <img src="{{ estudiante.avatar.url }}" alt="Avatar de {{ estudiante.nombre }}">
-    {% endif %}
+    <div class="container">
+        {% if estudiante.avatar %}
+            <img src="{{ estudiante.avatar.url }}" alt="Avatar de {{ estudiante.nombre }}" height='40px'>
+        {% else %}
+            <img src="{% static 'default-avatar.png' %}" alt="{{estudiante.nombre}}" height='40px'>
+        {% endif %}
+    </div>
     <a href="{% url 'lista_estudiantes' %}">Volver a la lista</a>
 {% endblock %}
+

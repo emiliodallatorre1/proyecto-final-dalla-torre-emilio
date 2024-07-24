@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title_head %}Nuevo Estudiante{% endblock %}
+{% block title_head %}
+Nuevo Estudiante
+{% endblock %}
 
 {% block h1_header %}
     Crear Nuevo Estudiante
 {% endblock h1_header %}
 
 {% block main %}
-    <h2>Nuevo Estudiante</h2>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Guardar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 {% endblock %}

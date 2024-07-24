@@ -18,7 +18,7 @@ class Estudiante(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     email = models.EmailField()
-    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
+    avatar = models.ImageField(upload_to='avatars_estudiantes/', blank=True, null=True)
     fecha_nacimiento = models.DateField(blank=True, null=True)
     materias = models.ManyToManyField(Materia, blank=True)
     

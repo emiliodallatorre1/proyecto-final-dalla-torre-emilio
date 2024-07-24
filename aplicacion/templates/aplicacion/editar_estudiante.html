@@ -9,10 +9,10 @@ Editar Estudiante
 {% endblock %}
 
 {% block main %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Guardar cambios">
-    </form>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar cambios</button>
+</form>
     <a href="{% url 'lista_estudiantes' %}">Cancelar</a>
 {% endblock %}

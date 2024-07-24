@@ -1,11 +1,16 @@
 from django import forms
 from .models import Estudiante, Materia
+from django.forms.widgets import DateInput
 
 class EstudianteForm(forms.ModelForm):
     materias = forms.MultipleChoiceField(
         choices=Materia.OPCIONES_MATERIAS,
         widget=forms.CheckboxSelectMultiple,
         required=False
+    )
+    fecha_nacimiento = forms.DateField(
+        widget=DateInput(format='%d/%m/%Y'),  
+        input_formats=['%d/%m/%Y'] 
     )
     class Meta:
         model = Estudiante
@@ -15,7 +20,6 @@ class EstudianteForm(forms.ModelForm):
         instance = super().save(commit=False)
         if commit:
             instance.save()
-            # Manejo de materias
             materias = self.cleaned_data.get('materias')
             if materias:
                 instance.materias.clear()

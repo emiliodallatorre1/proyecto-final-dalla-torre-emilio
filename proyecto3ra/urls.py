@@ -30,4 +30,6 @@ urlpatterns = [
     path('estudiantes/<int:estudiante_id>/eliminar/', eliminar_estudiante, name='eliminar_estudiante'),
     path('usuarios/', include('usuarios.urls')),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
