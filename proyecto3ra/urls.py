@@ -29,6 +29,7 @@ urlpatterns = [
     path('estudiantes/<int:estudiante_id>/editar/', editar_estudiante, name='editar_estudiante'),
     path('estudiantes/<int:estudiante_id>/eliminar/', eliminar_estudiante, name='eliminar_estudiante'),
     path('usuarios/', include('usuarios.urls')),
+    path('chat/', include('mensajeria.urls')),
 ]
 
 if settings.DEBUG:

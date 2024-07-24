@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
     {% load static %}
     <head>
@@ -39,13 +39,16 @@
             </a>
                 <form action={% url "logout" %} method='POST'>
                     {% csrf_token %}
-                    <input type="submit" class="btn btn-secondary" value="Cerrar Sesión">
+                    <input type="submit" class="btn btn-secondary " value="Cerrar Sesión">
                 </form>
             {% else %}
-                <a class="btn btn-primary" href="{% url 'login' %}">Iniciar Sesión</a>
+                <a class="btn btn-success" href="{% url 'login' %}">Iniciar Sesión</a>
                 <a class="btn btn-primary" href="{% url 'registro' %}">Registro</a>
             {% endif %}           
             </div>
+            {% if user.is_authenticated %}
+            <a href="{% url 'chat' %}" class="btn btn-primary">Chat</a>
+            {% endif %}
         </nav>
         <!-- Masthead-->
         {% block header %}
@@ -81,26 +84,12 @@
                         <ul class="list-inline mb-2">
                             <li class="list-inline-item"><a href="#!">About</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contact</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+
                         </ul>
                         <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights Reserved.</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </div>
             </div>
@@ -115,4 +104,98 @@
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
+
+
 </html> 
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>
+            {% block title_head %}
+            Mi Aplicación
+            {% endblock title_head %}
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'lista_estudiantes' %}">Lista Estudiantes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'nuevo_estudiante' %}">Nuevo Estudiante</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'editar_perfil' %}">
+                                    {% if user.avatar %}
+                                        <img src="{{user.avatar.url}}" alt="{{user.name}}" height='40px'>
+                                    {% else %}
+                                        <img src="{% static 'default-avatar.png' %}" alt="{{user.name}}" height='40px'>
+                                    {% endif %}
+                                    {{request.user.username}}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <form action="{% url 'logout' %}" method='POST'>
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link nav-link">Cerrar Sesión</button>
+                                </form>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'registro' %}">Registro</a>
+                            </li>
+                        {% endif %}
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'chat' %}">Chat</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header class="masthead">
+            <div class="container">
+                <h1 class="text-center text-white">
+                    {% block h1_header %}
+                    Inicio
+                    {% endblock h1_header %}
+                </h1>
+            </div>
+        </header>
+
+        <main class="container mt-4">
+            {% block main %}
+            {% endblock main %}
+        </main>
+
+        <footer class="footer bg-light mt-4">
+            <div class="container text-center py-3">
+                <p class="text-muted">&copy; Mi Aplicación 2023. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static 'js/scripts.js' %}"></script>
+    </body>
+</html> {% endcomment %}

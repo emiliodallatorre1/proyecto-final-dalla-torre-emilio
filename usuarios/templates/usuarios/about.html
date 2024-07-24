@@ -1,9 +1,28 @@
-<!-- templates/about.html -->
 {% extends 'base.html' %}
 
-{% block title %}About{% endblock %}
+{% block title_head %}
+Sobre Mi
+{% endblock %}
 
-{% block content %}
-<h1>About Us</h1>
-<p>Esta es la página de "Acerca de".</p>
+{% block h1_header %}
+Sobre Mi
+{% endblock %}
+
+{% block main %}
+<div class="about-me">
+    <h2>Mi Historia</h2>
+    <p>
+        Aquí puedes escribir tu historia. Puedes usar HTML para darle formato al texto.
+        <br>
+        Por ejemplo, puedes usar <strong>negrita</strong>, <em>cursiva</em>, listas:
+    </p>
+    <ul>
+        <li>Punto uno</li>
+        <li>Punto dos</li>
+        <li>Punto tres</li>
+    </ul>
+    <p>
+        También puedes añadir enlaces, imágenes y cualquier otro contenido HTML que desees.
+    </p>
+</div>
 {% endblock %}

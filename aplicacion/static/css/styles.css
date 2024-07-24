@@ -118,6 +118,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-bottom: 0.5rem;
   font-weight: 700;
   line-height: 1.2;
+  color: #212529;
 }
 
 h1, .h1 {
@@ -2847,7 +2848,7 @@ textarea.form-control-lg {
 .btn-primary {
   --bs-btn-color: #fff;
   --bs-btn-bg: #0d6efd;
-  --bs-btn-border-color: #0d6efd;
+  --bs-btn-border-color: #262b33;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #0b5ed7;
   --bs-btn-hover-border-color: #0a58ca;
@@ -2863,7 +2864,7 @@ textarea.form-control-lg {
 
 .btn-secondary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #6c757d;
+  --bs-btn-bg: #d33247;
   --bs-btn-border-color: #6c757d;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #5c636a;
@@ -2881,7 +2882,7 @@ textarea.form-control-lg {
 .btn-success {
   --bs-btn-color: #fff;
   --bs-btn-bg: #198754;
-  --bs-btn-border-color: #198754;
+  --bs-btn-border-color: #314139;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #157347;
   --bs-btn-hover-border-color: #146c43;
@@ -10842,7 +10843,7 @@ textarea.form-control-lg {
 header.masthead {
   position: relative;
   background-color: #343a40;
-  background: url("../assets/img/bg-masthead.jpg") no-repeat center center;
+  background: url("../assets/img/fondo.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -10855,18 +10856,25 @@ header.masthead:before {
   width: 100%;
   top: 0;
   left: 0;
-  opacity: 0.5;
+  opacity: 0.3;
+  
 }
 header.masthead h1, header.masthead .h1 {
   font-size: 2rem;
+  color: #000; 
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 @media (min-width: 768px) {
   header.masthead {
     padding-top: 12rem;
     padding-bottom: 12rem;
+    color: #000; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   }
   header.masthead h1, header.masthead .h1 {
     font-size: 3rem;
+    color: #000; 
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
   }
 }
 
@@ -10917,4 +10925,7 @@ header.masthead h1, header.masthead .h1 {
 footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
+  background-color: #000 !important; /* Fondo oscuro */
+  color: #ffffff; /* Texto blanco */
+  padding: 20px 0;
 }

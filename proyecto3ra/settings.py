@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aplicacion',
     'usuarios',
+    'mensajeria',
     'django_registration',
 ]
 

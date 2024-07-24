@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block h1_header %}
+  Chat
+{% endblock h1_header %}
+
+{% block main %}
+{% block content %}
+<h2>Chat</h2>
+
+<div id="chat-messages">
+    
+</div>
+
+<form id="mensaje-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        function cargarMensajes() {
+            $.get('{% url "obtener_mensajes" %}', function(data) {
+                var mensajes = '';
+                data.forEach(function(mensaje) {
+                    mensajes += '<div class="mensaje"><strong>' + mensaje.emisor + ':</strong> ' + mensaje.contenido + ' <small>' + mensaje.fecha + '</small></div>';
+            });
+            $('#chat-messages').html(mensajes);
+        });
+    }
+    
+    cargarMensajes();
+    setInterval(cargarMensajes, 5000); 
+    
+    $('#mensaje-form').submit(function(e) {
+        e.preventDefault();
+        $.post('{% url "enviar_mensaje" %}', $(this).serialize(), function(data) {
+            if (data.status === 'success') {
+                $('#id_contenido').val('');  
+                cargarMensajes(); 
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+{% endblock main %}
