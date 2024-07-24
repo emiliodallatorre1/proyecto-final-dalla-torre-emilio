@@ -1,8 +1,9 @@
 # Proyecto Final Dalla Torre Emilio
 
 *Este proyecto se continuo desde la tercera entrega. Se le agregó la aplicación usuarios, con la idea de que sean Profesores y se puedan loguear y llevar un registro de sus alumnos y las materias que cursan.
-También se le agregó una aplicación de mensajería. 
-Estas funcionalides solo están disponibles cuando el usuario esta logueado. En caso de no estarlo, lo lleva a la página de Inicio de Sesión y si no tiene cuenta, a la de Registro.*
+También se le agregó una aplicación de mensajería. *
+
+*Estas funcionalides solo están disponibles cuando el usuario esta logueado. En caso de no estarlo, lo lleva a la página de Inicio de Sesión y si no tiene cuenta, a la de Registro.*
 ## Pasos: 
 
 - 1 Creo la carpeta "Proyecto Final" que contendrá mi proyecto
