@@ -11,8 +11,12 @@ def inicio(request):
 @login_required
 def lista_estudiantes(request):
     formulario = BuscarEstudiante(request.GET)
-    estudiantes = Estudiante.objects.filter(profesor=request.user)
-
+    
+    if request.user.is_superuser:
+        estudiantes = Estudiante.objects.all()
+    else:
+        estudiantes = Estudiante.objects.filter(profesor=request.user)
+        
     if formulario.is_valid():
         nombre = formulario.cleaned_data.get('nombre')
         apellido = formulario.cleaned_data.get('apellido')
@@ -44,12 +48,18 @@ def nuevo_estudiante(request):
 
 @login_required
 def ver_estudiante(request, estudiante_id):
-    estudiante = get_object_or_404(Estudiante, id=estudiante_id, profesor=request.user)
+    if request.user.is_superuser:
+        estudiante = get_object_or_404(Estudiante, id=estudiante_id)
+    else:
+        estudiante = get_object_or_404(Estudiante, id=estudiante_id, profesor=request.user)
     return render(request, 'aplicacion/ver_estudiante.html', {'estudiante': estudiante})
 
 @login_required
 def editar_estudiante(request, estudiante_id):
-    estudiante = get_object_or_404(Estudiante, id=estudiante_id, profesor=request.user)
+    if request.user.is_superuser:
+        estudiante = get_object_or_404(Estudiante, id=estudiante_id)
+    else:
+        estudiante = get_object_or_404(Estudiante, id=estudiante_id, profesor=request.user)
     if request.method == 'POST':
         form = EstudianteForm(request.POST, request.FILES, instance=estudiante)
         if form.is_valid():
@@ -61,25 +71,12 @@ def editar_estudiante(request, estudiante_id):
 
 @login_required
 def eliminar_estudiante(request, estudiante_id):
-    estudiante = get_object_or_404(Estudiante, id=estudiante_id)
+    if request.user.is_superuser:
+        estudiante = get_object_or_404(Estudiante, id=estudiante_id)
+    else:
+        estudiante = get_object_or_404(Estudiante, id=estudiante_id)
     if request.method == 'POST':
         estudiante.delete()
         return redirect('lista_estudiantes')
     return render(request, 'aplicacion/eliminar_estudiante.html', {'estudiante': estudiante})
-
-# @login_required
-# def editar_estudiante(request, estudiante_id):
-#     estudiante = get_object_or_404(Estudiante, id=estudiante_id, profesor=request.user)
-#     if request.method == 'POST':
-#         form = EstudianteForm(request.POST, request.FILES, instance=estudiante)
-#         if form.is_valid():
-#             logger.info(f"Form is valid. Files: {request.FILES}")
-#             estudiante = form.save()
-#             logger.info(f"Estudiante saved. Avatar: {estudiante.avatar}")
-#             return redirect('ver_estudiante', estudiante_id=estudiante.id)
-#         else:
-#             logger.error(f"Form errors: {form.errors}")
-#     else:
-#         form = EstudianteForm(instance=estudiante)
-#     return render(request, 'aplicacion/editar_estudiante.html', {'form': form, 'estudiante': estudiante})
 

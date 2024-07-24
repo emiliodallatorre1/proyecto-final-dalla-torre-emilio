@@ -12,15 +12,22 @@
     <h2>Lista de Estudiantes</h2>
     <ul>
         {% for estudiante in estudiantes %}
+        <div class="estudiante">
+            <h3>{{ estudiante.nombre }} {{ estudiante.apellido }}</h3>
+            {% if user.is_superuser %}
+                <p>Profesor: {{ estudiante.profesor.username }}</p>
+            {% endif %}
             <li>
                 {{ estudiante.nombre }} {{ estudiante.apellido }}
                 <a href="{% url 'ver_estudiante' estudiante.id %}">Ver</a>
                 <a href="{% url 'editar_estudiante' estudiante.id %}">Editar</a>
                 <a href="{% url 'eliminar_estudiante' estudiante.id %}">Eliminar</a>
             </li>
+        </div>
         {% endfor %}
     </ul>
 {% else %}
     <p>No hay estudiantes registrados.</p>
 {% endif %}
 {% endblock %}
+
