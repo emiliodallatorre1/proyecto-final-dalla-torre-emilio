@@ -1,9 +1,9 @@
-Proyecto Final 
+#Proyecto Final Dalla Torre Emilio
 
-Dalla Torre Emilio
+##Pasos: 
 
-1) Creo la carpeta "3RA ENTREGA" que contendra mi proyecto
-2) Agrego los archivos .gitignore y README
+- Elemento 1 Creo la carpeta "3RA ENTREGA" que contendra mi proyecto
+- Elemento 2 Agrego los archivos .gitignore y README
 3) Creo el entorno virtual en el que voy a trabajar->(py -m venv venv)
 4) Inicializo Git y hago el primer commit
 5) Conecto mi repositorio local al de GitHub y lo pusheo
