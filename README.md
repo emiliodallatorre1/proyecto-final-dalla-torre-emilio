@@ -1,6 +1,7 @@
-Bienvenidos a la Tercera Entrega
+Proyecto Final 
 
 Dalla Torre Emilio
+
 1) Creo la carpeta "3RA ENTREGA" que contendra mi proyecto
 2) Agrego los archivos .gitignore y README
 3) Creo el entorno virtual en el que voy a trabajar->(py -m venv venv)

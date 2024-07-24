@@ -13,9 +13,9 @@
     <ul>
         {% for estudiante in estudiantes %}
         <div class="estudiante">
-            <h3>{{ estudiante.nombre }} {{ estudiante.apellido }}</h3>
+            {% comment %} <h3>{{ estudiante.nombre }} {{ estudiante.apellido }}</h3> {% endcomment %}
             {% if user.is_superuser %}
-                <p>Profesor: {{ estudiante.profesor.username }}</p>
+                <p><strong>Profesor: {{ estudiante.profesor.username }}</strong></p>
             {% endif %}
             <li>
                 {{ estudiante.nombre }} {{ estudiante.apellido }}

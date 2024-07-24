@@ -11,7 +11,6 @@ class UserRegisterForm(UserCreationForm):
     password2 = forms.CharField(label="Repetir contraseña", widget=forms.PasswordInput)
     avatar = forms.ImageField(required=False)
     biografia = forms.CharField(label='Biografía', max_length=250)    
-    # edad=forms.NumberInput()
     class Meta:
         model = Usuario
         fields = ['username','name','last_name','email', 'avatar', 'biografia', 'password1', 'password2']
@@ -19,10 +18,10 @@ class UserRegisterForm(UserCreationForm):
 
 class UserEditForm(UserChangeForm):
     password=None
-    username=forms.CharField(label='Nombre de Usuario', max_length=20)
-    email = forms.EmailField(label='Correo Electrónico')
-    avatar = forms.ImageField(label='Avatar')
-    biografia = forms.CharField(label='Biografía')    
+    username=forms.CharField(label='Nombre de Usuario', max_length=20, required=False)
+    email = forms.EmailField(label='Correo Electrónico', required=False)
+    avatar = forms.ImageField(label='Avatar', required=False)
+    biografia = forms.CharField(label='Biografía', required=False)    
     class Meta:
         model = Usuario
         fields = ['username', 'email', 'avatar','biografia']
