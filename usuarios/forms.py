@@ -44,5 +44,5 @@ class PasswordChangeForm(DjangoPasswordChangeForm):
         fields = ['old_password', 'new_password1', 'new_password2']
 
 class InicioSesionForm(AuthenticationForm):
-    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Usuario'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Contraseña'}))
+    username = forms.CharField(label='Nombre de Usuario',widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Usuario'}))
+    password = forms.CharField(label='Contraseña',widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Contraseña'}))
