@@ -11,7 +11,16 @@ Detalles del Estudiante
 
 {% block main %}
 
-    <h2>{{ estudiante.nombre }} {{ estudiante.apellido }}</h2>
+    <div class="estudiante-header">
+        <h2>{{ estudiante.nombre }} {{ estudiante.apellido }}</h2>
+        <div class="avatar-container">
+            {% if estudiante.avatar %}
+                <img src="{{ estudiante.avatar.url }}" alt="Avatar de {{ estudiante.nombre }}" class="avatar">
+            {% else %}
+                <img src="{% static 'default-avatar.png' %}" alt="{{ estudiante.nombre }}" class="avatar">
+            {% endif %}
+        </div>
+    </div>
     <p>Email: {{ estudiante.email }}</p>
     <p>Fecha de nacimiento: {{ estudiante.fecha_nacimiento }}</p>
     <h3>Materias:</h3>
@@ -22,13 +31,7 @@ Detalles del Estudiante
             <li>No está inscrito en ninguna materia.</li>
         {% endfor %}
     </ul>
-    <div class="container">
-        {% if estudiante.avatar %}
-            <img src="{{ estudiante.avatar.url }}" alt="Avatar de {{ estudiante.nombre }}" height='40px'>
-        {% else %}
-            <img src="{% static 'default-avatar.png' %}" alt="{{estudiante.nombre}}" height='40px'>
-        {% endif %}
-    </div>
+    
     <a href="{% url 'lista_estudiantes' %}">Volver a la lista</a>
 {% endblock %}
 
