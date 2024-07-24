@@ -6,7 +6,7 @@ También se le agregó una aplicación de mensajería.*
 *Estas funcionalides solo están disponibles cuando el usuario esta logueado. En caso de no estarlo, lo lleva a la página de Inicio de Sesión y si no tiene cuenta, a la de Registro.*
 ## Pasos: 
 
-- 1 Creo la carpeta "Proyecto Final" que contendrá mi proyecto
+- 1 Creo la carpeta "3ra Entrega" que contendrá mi proyecto
 - 2 Agrego los archivos .gitignore y README
 - 3 Creo el **entorno virtual** en el que voy a trabajar->(py -m venv venv)
 - 4 Inicializo Git y hago el primer commit
