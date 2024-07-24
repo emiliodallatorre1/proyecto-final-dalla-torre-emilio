@@ -60,3 +60,6 @@ def change_password(request):
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'usuarios/cambiar_pass.html', {'form': form})
+
+def about_me(request):
+    return render(request, 'usuarios/about_me.html')
