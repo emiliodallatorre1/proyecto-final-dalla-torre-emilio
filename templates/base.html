@@ -8,7 +8,7 @@
         <meta name="author" content="" />
         <title>
             {% block title_head %}
-            Landing Page - Start Bootstrap Theme
+            Proyecto Final
             {% endblock title_head %}
         </title>
         <!-- Favicon-->
@@ -29,7 +29,7 @@
                 <a class="navbar-brand" href={% url "nuevo_estudiante" %}>Nuevo Estudiante</a>
             
             {% if user.is_authenticated %}
-            <a class="navbar-brand" href="{% url 'editar_perfil' %}">
+            <a class="navbar-brand" href="{% url 'perfil' %}">
                 {% if user.avatar %}
                 <img src="{{user.avatar.url}}" alt="{{user.name}}" height='40px'>
                 {% else %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title_head %}
+Perfil de {{ user.username }}
+{% endblock %}
+
+{% block h1_header %}
+Perfil de {{ user.username }}
+{% endblock %}
+
+{% block main %}
+<div class="profile-view">
+    <h2>Información del Perfil</h2>
+    <p><strong>Nombre de Usuario:</strong> {{ user.username }}</p>
+    <p><strong>Correo Electrónico:</strong> {{ user.email }}</p>
+    {% if user.avatar %}
+        <p><strong>Avatar:</strong> <img src="{{ user.avatar.url }}" alt="Avatar de {{ user.username }}" style="max-width: 150px; max-height: 150px;"></p>
+    {% endif %}
+    <p><strong>Biografía:</strong> {{ user.biografia }}</p>
+    <a href="{% url 'editar_perfil' %}" class="btn btn-primary">Editar Perfil</a>
+</div>
+{% endblock %}
+

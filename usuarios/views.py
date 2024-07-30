@@ -61,5 +61,9 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'usuarios/cambiar_pass.html', {'form': form})
 
+@login_required
+def view_profile(request):
+    return render(request, 'usuarios/ver_perfil.html', {'user': request.user})
+
 def about_me(request):
     return render(request, 'usuarios/about_me.html')
